@@ -28,16 +28,11 @@ module.exports = function(expr, options) {
   }
 
   var tex_stream = latex([
-    "\\nonstopmode",
     "\\documentclass{minimal}",
-    packages.join("\n"),
-    "\\usepackage[active,tightpage]{preview}",
-    "\\usepackage{transparent}",
-    options.macros || "",
     "\\begin{document}",
-    "\\begin{preview} $",
+    '\\[',
     sanitize(expr),
-    "$ \\end{preview}",
+    '\\]',
     "\\end{document}"
   ], {
     command: options.pdflatex_path || "pdflatex",
